@@ -1,0 +1,72 @@
+name: SayaPrueba
+
+
+axes:
+  shared_stepper_disable_pin: NO_PIN
+  
+  x:
+    steps_per_mm: 80
+    max_rate_mm_per_min: 1000
+    acceleration_mm_per_sec2: 25
+    max_travel_mm: 1000
+    homing:
+      cycle: 1
+      mpos_mm: 150
+      positive_direction: false
+      feed_mm_per_min: 100.000
+      seek_mm_per_min: 200.000
+      settle_ms: 500
+    
+    motor0:
+      limit_neg_pin: gpio.34:low
+      tmc_2209:
+        uart_num: 1
+        addr: 0
+        cs_pin: NO_PIN
+        r_sense_ohms: 0.110
+        run_amps: 1.000
+        hold_amps: 0.500
+        microsteps: 16
+        stallguard: 0
+        stallguard_debug: false
+        toff_disable: 0
+        toff_stealthchop: 5
+        toff_coolstep: 3
+        run_mode: StealthChop
+        homing_mode: StealthChop
+        use_enable: false
+        direction_pin: I2SO.1
+        step_pin: I2SO.2
+        disable_pin: I2SO.0:low
+
+stepping:
+  engine: I2S_STREAM
+  idle_ms: 250
+  pulse_us: 4
+  dir_delay_us: 0
+  disable_delay_us: 0
+
+uart1:
+  txd_pin: NO_PIN
+  rxd_pin: gpio.16
+  rts_pin: NO_PIN
+  cts_pin: NO_PIN
+  baud: 115200
+  mode: 8N1
+
+i2so:
+  bck_pin: gpio.22
+  data_pin: gpio.21
+  ws_pin: gpio.17
+
+sdcard:
+  card_detect_pin: no_pin
+  cs_pin: gpio.5
+
+spi:
+  miso_pin: gpio.19
+  mosi_pin: gpio.23
+  sck_pin: gpio.18
+
+Laser:
+  output_pin: gpio.14
